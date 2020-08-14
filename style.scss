@@ -29,7 +29,7 @@ body {
   width: var(--box-size);
   height: var(--box-size);
   background-color: #fff;
-  border: 1px solid #000;
+  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,21 +66,23 @@ body {
   cursor: not-allowed;
 }
 
-//initializing box.x background color
+//initializing box.x and box.o background color
 
+.box.x::before,
 .box.x::after,
-.box.x::before {
-  background-color: #000;
+.box.o::before {
+  background-color: rgb(4, 53, 4);
 }
 
-//fake mark on hover
+//fake x mark and o mark on hover
 
 .board.x .box:not(.x):not(.o):hover::before,   //when the board has the x class and box doesn't have x or o classes
-.board.x .box:not(.x):not(.o):hover::after {
-  background-color: #eee !important;
+.board.x .box:not(.x):not(.o):hover::after,
+.board.o .box:not(.x):not(.o):hover::before {
+  background-color: #ccc !important;
 }
 
-//adding mark in a box
+//adding x mark in a box
 
 .box.x::after,
 .box.x::before,
@@ -89,7 +91,6 @@ body {
   content: '';   //blank the content
   width: calc(var(--mark-size) * .12);
   height: var(--mark-size);
-  background-color: #000;
   position: absolute;
 }
 
@@ -103,21 +104,58 @@ body {
   transform: rotate(45deg);
 }
 
+//adding o mark in a box
+
 .box.o::after,
-.box.o::before {
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before,
+.board.o .box:not(.x):not(.o):hover::after {
   content: '';   //blank the content
   border-radius: 50px;
   position: absolute;
 }
 
-.box.o::before {
-  background-color: #000;
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before {
   width: calc(var(--mark-size) * .9);
   height: calc(var(--mark-size) * .9);
 }
 
-.box.o::after {
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::after {
   background-color: #fff;
   width: calc(var(--mark-size) * .7);
   height: calc(var(--mark-size) * .7);
+}
+
+//Styling the winning message
+
+.winning-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 5rem;
+  flex-direction: column;
+
+  button {
+    font-size: 2.5rem;
+    background-color: white;
+    border: 1px solid #000;
+    padding: 1rem;
+    cursor: pointer;
+    
+    &:hover {
+      border: 1px solid #fff;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
 }
