@@ -1,3 +1,10 @@
-import { handleClick } from "./board.js";
+import { render, setBoardHoverlass } from './board.js';
+import { } from './game.js';
 
 
+function start () {
+  render()
+  setBoardHoverlass()
+}
+
+start()
