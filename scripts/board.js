@@ -1,7 +1,9 @@
-const boxes = document.querySelectorAll('[data-box]')
+import { placeMark } from './player.js';
+import { swicthTurns, O_TURN } from './game.js'
+
 const X_CLASS = 'x'
 const O_CLASS = 'o'
-let O_TURN
+const boxes = document.querySelectorAll('[data-box]')
 
 boxes.forEach(box => {
   box.addEventListener('click', handleClick, { once: true })
@@ -10,9 +12,11 @@ boxes.forEach(box => {
 export function handleClick (e) {
   const box = e.target
   const currentClass = O_TURN ? O_CLASS : X_CLASS
-  placeMark(box, currentClass) 
+  placeMark(box, currentClass)
+  swicthTurns()
+  setBoardHoverlass()
 }
 
-export function placeMark(box, currentClass) {
-  box.classList.add(currentClass)
+export function setBoardHoverlass () {
+  
 }
