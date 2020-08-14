@@ -71,7 +71,7 @@ body {
 .box.x::before,
 .box.x::after,
 .box.o::before {
-  background-color: rgb(4, 53, 4);
+  background-color: rgb(6, 33, 51);
 }
 
 //fake x mark and o mark on hover
@@ -131,13 +131,13 @@ body {
 //Styling the winning message
 
 .winning-message {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
@@ -158,4 +158,7 @@ body {
     }
   }
 
+  &.show {
+    display: flex;
+  }
 }

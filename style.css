@@ -80,7 +80,7 @@ body {
 .box.x::before,
 .box.x::after,
 .box.o::before {
-  background-color: #043504;
+  background-color: #062133;
 }
 
 .board.x .box:not(.x):not(.o):hover::before,
@@ -134,15 +134,13 @@ body {
 }
 
 .winning-message {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -169,5 +167,11 @@ body {
   border: 1px solid #fff;
   background-color: #000;
   color: #fff;
+}
+
+.winning-message.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */
