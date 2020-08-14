@@ -84,7 +84,7 @@ body {
 
 .board.x .box:not(.x):not(.o):hover::before,
 .board.x .box:not(.x):not(.o):hover::after {
-  background-color: #eee;
+  background-color: #eee !important;
 }
 
 .box.x::after,

@@ -38,6 +38,7 @@ body {
 }
 
 // Removing bundaries borders
+
 .box:first-child,
 .box:nth-child(2),
 .box:nth-child(3) {
@@ -65,6 +66,8 @@ body {
   cursor: not-allowed;
 }
 
+//initializing box.x background color
+
 .box.x::after,
 .box.x::before {
   background-color: #000;
@@ -74,10 +77,11 @@ body {
 
 .board.x .box:not(.x):not(.o):hover::before,   //when the board has the x class and box doesn't have x or o classes
 .board.x .box:not(.x):not(.o):hover::after {
-  background-color: #eee;
+  background-color: #eee !important;
 }
 
-//adding mark to a box
+//adding mark in a box
+
 .box.x::after,
 .box.x::before,
 .board.x .box:not(.x):not(.o):hover::before,
