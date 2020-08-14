@@ -1,24 +1,119 @@
-body {
-  background-color: #eee
-
-  p {
-    color: #fff;
-  }
+*, 
+*::after, 
+*::before {
+  box-sizing: border-box;
 }
 
-#gameboard {
-  display: grid;
-  position: relative;
-  top: 30vh;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: minmax(200px);
-  width: 30%;
-  height: 30vh;
-  margin: auto;
-  text-align: center;
+:root {
+  --box-size: 100px;
+  --mark-size: calc(var(--box-size) * .9)
+}
 
-  .box {
-    border: 1px solid #000;
-    padding: 10px;
-  }
+body {
+  margin: 0;
+  background-color: #eee
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;  //center the board horizontally
+  align-content: center;    //center the board vertically
+  justify-items: center;    //center the content of the individual box horizontally
+  align-items: center;      //center the content of the individual box vertically
+  grid-template-columns: repeat(3, auto);
+}
+
+.box {
+  width: var(--box-size);
+  height: var(--box-size);
+  background-color: #fff;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+// Removing bundaries borders
+.box:first-child,
+.box:nth-child(2),
+.box:nth-child(3) {
+  border-top: none;
+}
+
+.box:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.box:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.box:last-child,
+.box:nth-child(8),
+.box:nth-child(7) {
+  border-bottom: none;
+}
+
+//removing the cursor pointer on filled box
+
+.box.x,
+.box.o {
+  cursor: not-allowed;
+}
+
+.box.x::after,
+.box.x::before {
+  background-color: #000;
+}
+
+//fake mark on hover
+
+.board.x .box:not(.x):not(.o):hover::before,   //when the board has the x class and box doesn't have x or o classes
+.board.x .box:not(.x):not(.o):hover::after {
+  background-color: #eee;
+}
+
+//adding mark to a box
+.box.x::after,
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after {
+  content: '';   //blank the content
+  width: calc(var(--mark-size) * .12);
+  height: var(--mark-size);
+  background-color: #000;
+  position: absolute;
+}
+
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+
+.box.o::after,
+.box.o::before {
+  content: '';   //blank the content
+  border-radius: 50px;
+  position: absolute;
+}
+
+.box.o::before {
+  background-color: #000;
+  width: calc(var(--mark-size) * .9);
+  height: calc(var(--mark-size) * .9);
+}
+
+.box.o::after {
+  background-color: #fff;
+  width: calc(var(--mark-size) * .7);
+  height: calc(var(--mark-size) * .7);
 }
