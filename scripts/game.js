@@ -20,7 +20,7 @@ export function swicthTurns() {
   O_TURN = !O_TURN
 }
 
-export function winner(currentClass) {
+function winner(currentClass) {
   return WINNING_ARRAY.some(combination => {
     return combination.every(index => {
       return boxes[index].classList.contains(currentClass)
@@ -28,7 +28,7 @@ export function winner(currentClass) {
   })
 }
 
-export function isDraw() {
+function isDraw() {
   return [...boxes].every(box => {
     return box.classList.contains(X_CLASS) || box.classList.contains(O_CLASS)
   })

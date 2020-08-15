@@ -7,6 +7,15 @@
   <title>TicTacToe</title>
 </head>
 <body>
+  <div class="start-page" id="startPage">
+    <h1 class="title">TIC TAC TOE GAME</h1>
+    <div class="inputs">
+      <input type="text" placeholder="PLAYER 1" id="player1">
+      <input type="text" placeholder="PLAYER 2" id="player2">
+    </div>
+    <button id="startBtn">START</button>
+  </div>
+
   <div class="board" id="board">
     <div class="box" data-box></div>
     <div class="box" data-box></div>
@@ -22,6 +31,7 @@
   <div class="winning-message" id="winningMessage">
     <div data-winning-text></div>
     <button id="restartBtn">Restart</button>
+    <button id="exitBtn">EXIT</button>
   </div>
 
   <script src="scripts/app.js" type="module"></script>
