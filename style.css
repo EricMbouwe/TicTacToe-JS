@@ -257,4 +257,8 @@ body {
 .d-none {
   display: none;
 }
+
+.error {
+  background-color: red;
+}
 /*# sourceMappingURL=style.css.map */

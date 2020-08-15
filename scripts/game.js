@@ -1,4 +1,5 @@
 import { boxes, X_CLASS, O_CLASS } from './board.js'
+import { setPlayerNames as playersNames } from "./player.js";
 
 export let O_TURN
 export const WINNING_MESSAGE_TEXT = document.querySelector('[data-winning-text]')
@@ -47,11 +48,25 @@ export function checkWinner(currentClass) {
 }
 
 function endGame(draw) {
+  const names = playersNames()
   if(draw) {
     WINNING_MESSAGE_TEXT.innerHTML = 'Draw!'
   }
   else {
-    WINNING_MESSAGE_TEXT.innerHTML = `${O_TURN ? "O's" : "X's"} Wins!`
+    WINNING_MESSAGE_TEXT.innerHTML = `${O_TURN ? names[1] : names[0]} Wins!`
   }
   winningMessage.classList.add('show')
+}
+
+export function checkPlayersNames () {
+  const names = playersNames()
+  if(names[0] === '') {
+    document.getElementById('player1').classList.add('error')
+    return false
+  }
+  else if (names[1] === '') {
+    document.getElementById('player2').classList.add('error')
+    return false
+  }
+  return true
 }
