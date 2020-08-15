@@ -1,0 +1,238 @@
+*, 
+*::after, 
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --box-size: 100px;
+  --mark-size: calc(var(--box-size) * .9)
+}
+
+body {
+  margin: 0;
+  background-color: #eee
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;  //center the board horizontally
+  align-content: center;    //center the board vertically
+  justify-items: center;    //center the content of the individual box horizontally
+  align-items: center;      //center the content of the individual box vertically
+  grid-template-columns: repeat(3, auto);
+}
+
+.box {
+  width: var(--box-size);
+  height: var(--box-size);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+// Removing bundaries borders
+
+.box:first-child,
+.box:nth-child(2),
+.box:nth-child(3) {
+  border-top: none;
+}
+
+.box:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.box:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.box:last-child,
+.box:nth-child(8),
+.box:nth-child(7) {
+  border-bottom: none;
+}
+
+//removing the cursor pointer on filled box
+
+.box.x,
+.box.o {
+  cursor: not-allowed;
+}
+
+//initializing box.x and box.o background color
+
+.box.x::before,
+.box.x::after,
+.box.o::before {
+  background-color: rgb(6, 33, 51);
+}
+
+//fake x mark and o mark on hover
+
+.board.x .box:not(.x):not(.o):hover::before,   //when the board has the x class and box doesn't have x or o classes
+.board.x .box:not(.x):not(.o):hover::after,
+.board.o .box:not(.x):not(.o):hover::before {
+  background-color: #ccc !important;
+}
+
+//adding x mark in a box
+
+.box.x::after,
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before,
+.board.x .box:not(.x):not(.o):hover::after {
+  content: '';   //blank the content
+  width: calc(var(--mark-size) * .12);
+  height: var(--mark-size);
+  position: absolute;
+}
+
+.box.x::after,
+.board.x .box:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+.box.x::before,
+.board.x .box:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+
+//adding o mark in a box
+
+.box.o::after,
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before,
+.board.o .box:not(.x):not(.o):hover::after {
+  content: '';   //blank the content
+  border-radius: 50px;
+  position: absolute;
+}
+
+.box.o::before,
+.board.o .box:not(.x):not(.o):hover::before {
+  width: calc(var(--mark-size) * .9);
+  height: calc(var(--mark-size) * .9);
+}
+
+.box.o::after,
+.board.o .box:not(.x):not(.o):hover::after {
+  background-color: #fff;
+  width: calc(var(--mark-size) * .7);
+  height: calc(var(--mark-size) * .7);
+}
+
+//Styling the winning message
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 5rem;
+  flex-direction: column;
+
+  button {
+    font-size: 2.5rem;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 5px 0;
+    cursor: pointer;
+    
+    &:hover {
+      border: 1px solid #fff;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  #exitBtn {
+    font-size: 1rem;
+    padding: 0.8rem;
+    font-weight: bold;
+  }
+
+  &.show {
+    display: flex;
+  }
+}
+
+.start-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 1rem;
+  z-index: 100;
+  overflow: hidden;
+
+
+  .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: aqua;
+    text-align: center;
+  }
+
+  .inputs {
+    display: flex;
+    flex-wrap: wrap;
+
+    input {
+      padding: 20px;
+      color:  rgb(6, 33, 51);
+      border-radius: 5px;
+      font-size: 1rem;
+      margin: 20px;
+      border: none;
+      outline-style: none;
+      flex: 1;
+    }
+  }
+
+  button {
+    font-size: 1.5rem;
+    background-color: white;
+    border: 1px solid #000;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: block;
+    border-radius: 5px;
+    margin-top: 2rem;
+    
+    &:hover {
+      border: 1px solid #fff;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+.error {
+  background-color: rgb(238, 18, 29);
+}
