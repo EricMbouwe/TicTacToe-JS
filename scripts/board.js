@@ -1,5 +1,5 @@
 import { placeMark } from './player.js';
-import { O_TURN, setWinner } from './game.js'
+import { O_TURN, checkWinner } from './game.js'
 
 export const X_CLASS = 'x'
 export const O_CLASS = 'o'
@@ -16,7 +16,8 @@ export function handleClick (e) {
   const box = e.target
   const currentClass = O_TURN ? O_CLASS : X_CLASS
   placeMark(box, currentClass)
-  setWinner(currentClass)
+  checkWinner(currentClass)
+  // swicthTurns()
   setBoardHoverlass()
 }
 

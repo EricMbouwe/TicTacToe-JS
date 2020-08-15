@@ -1,5 +1,5 @@
 import { render, setBoardHoverlass, boxes, handleClick, X_CLASS, O_CLASS } from './board.js';
-import { winningMessage } from './game.js';
+import { winningMessage, WINNING_MESSAGE_TEXT } from './game.js';
 
 const restartButton = document.getElementById('restartBtn')
 
@@ -13,6 +13,7 @@ function restart () {
   boxes.forEach(box => {
     box.classList.remove(X_CLASS)
     box.classList.remove(O_CLASS)
+    WINNING_MESSAGE_TEXT.innerHTML = ''
     box.removeEventListener('click', handleClick)
   })
   start()
