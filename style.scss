@@ -160,6 +160,12 @@ body {
     }
   }
 
+  #exitBtn {
+    font-size: 1rem;
+    padding: 0.8rem;
+    font-weight: bold;
+  }
+
   &.show {
     display: flex;
   }
@@ -169,7 +175,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
   align-items: center;
   position: fixed;
   top: 0;
@@ -180,14 +185,19 @@ body {
   color: #fff;
   font-size: 1rem;
   z-index: 100;
+  overflow: hidden;
+
 
   .title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 3rem;
     color: aqua;
+    text-align: center;
   }
 
   .inputs {
+    display: flex;
+    flex-wrap: wrap;
 
     input {
       padding: 20px;

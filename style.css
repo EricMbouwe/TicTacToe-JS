@@ -171,6 +171,12 @@ body {
   color: #fff;
 }
 
+.winning-message #exitBtn {
+  font-size: 1rem;
+  padding: 0.8rem;
+  font-weight: bold;
+}
+
 .winning-message.show {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,8 +194,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -202,12 +206,22 @@ body {
   color: #fff;
   font-size: 1rem;
   z-index: 100;
+  overflow: hidden;
 }
 
 .start-page .title {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 3rem;
   color: aqua;
+  text-align: center;
+}
+
+.start-page .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .start-page .inputs input {
