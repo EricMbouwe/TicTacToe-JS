@@ -15,6 +15,7 @@ const WINNING_ARRAY = [
     [2, 4, 6]
   ]
 
+
 export function swicthTurns() {
   O_TURN = !O_TURN
 }
@@ -22,12 +23,12 @@ export function swicthTurns() {
 export function winner(currentClass) {
   return WINNING_ARRAY.some(combination => {
     return combination.every(index => {
-      boxes[index].classList.contains(currentClass)
+      return boxes[index].classList.contains(currentClass)
     })
   })
 }
 
-export function isDraw() {
+function isDraw() {
   return [...boxes].every(box => {
     return box.classList.contains(X_CLASS) || box.classList.contains(O_CLASS)
   })
@@ -45,17 +46,4 @@ export function checkWinner(currentClass) {
   else {
     swicthTurns()
   }
-  console.log(currentClass)
-  console.log(WINNING_MESSAGE_TEXT.innerHTML)
-  console.log(winner(currentClass))
 }
-
-// export function endGame(isDraw) {
-//   if(isDraw) {
-//     WINNING_MESSAGE_TEXT.innerHTML = 'Draw!'
-//   }
-//   else {
-//     WINNING_MESSAGE_TEXT.innerHTML = `${O_TURN ? "O's" : "X's"} Wins!`
-//   }
-//   winningMessage.classList.add('show')
-// }

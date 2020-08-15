@@ -1,11 +1,11 @@
-import { render, setBoardHoverlass, boxes, handleClick, X_CLASS, O_CLASS } from './board.js';
+import { render as renderBoard, setBoardHoverClass, boxes, handleClick, X_CLASS, O_CLASS } from './board.js';
 import { winningMessage, WINNING_MESSAGE_TEXT } from './game.js';
 
 const restartButton = document.getElementById('restartBtn')
 
 function start () {
-  render()
-  setBoardHoverlass()
+  renderBoard()
+  setBoardHoverClass()
 }
 
 function restart () {

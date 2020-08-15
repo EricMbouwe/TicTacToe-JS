@@ -17,11 +17,10 @@ export function handleClick (e) {
   const currentClass = O_TURN ? O_CLASS : X_CLASS
   placeMark(box, currentClass)
   checkWinner(currentClass)
-  // swicthTurns()
-  setBoardHoverlass()
+  setBoardHoverClass()
 }
 
-export function setBoardHoverlass () {
+export function setBoardHoverClass () {
   board.classList.remove(X_CLASS)
   board.classList.remove(O_CLASS)
   if(O_TURN) {
