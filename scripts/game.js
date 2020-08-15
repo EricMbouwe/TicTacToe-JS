@@ -28,7 +28,7 @@ export function winner(currentClass) {
   })
 }
 
-function isDraw() {
+export function isDraw() {
   return [...boxes].every(box => {
     return box.classList.contains(X_CLASS) || box.classList.contains(O_CLASS)
   })
@@ -36,14 +36,22 @@ function isDraw() {
 
 export function checkWinner(currentClass) {
   if (winner(currentClass)) {
-    WINNING_MESSAGE_TEXT.innerHTML = `${O_TURN ? "O's" : "X's"} Wins!`
-    winningMessage.classList.add('show')
+    endGame(false)
   } 
   else if (isDraw()) {
-    WINNING_MESSAGE_TEXT.innerHTML = 'Draw!'
-    winningMessage.classList.add('show')
+    endGame(true)
   }
   else {
     swicthTurns()
   }
+}
+
+function endGame(draw) {
+  if(draw) {
+    WINNING_MESSAGE_TEXT.innerHTML = 'Draw!'
+  }
+  else {
+    WINNING_MESSAGE_TEXT.innerHTML = `${O_TURN ? "O's" : "X's"} Wins!`
+  }
+  winningMessage.classList.add('show')
 }
