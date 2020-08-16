@@ -230,7 +230,7 @@ body {
   border-radius: 5px;
   font-size: 1rem;
   margin: 20px;
-  border: none;
+  border: 2px solid transparent;
   outline-style: none;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -259,6 +259,6 @@ body {
 }
 
 .error {
-  background-color: red;
+  border-color: #ee121d !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,5 +1,5 @@
-const playerOne = document.getElementById('player1')
-const playerTwo = document.getElementById('player2')
+export const playerOne = document.getElementById('player1')
+export const playerTwo = document.getElementById('player2')
 
 export function placeMark(box, currentClass) {
   box.classList.add(currentClass)
