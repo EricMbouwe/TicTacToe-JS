@@ -205,7 +205,7 @@ body {
       border-radius: 5px;
       font-size: 1rem;
       margin: 20px;
-      border: none;
+      border: 2px solid transparent;
       outline-style: none;
       flex: 1;
     }
@@ -234,5 +234,5 @@ body {
 }
 
 .error {
-  background-color: rgb(238, 18, 29);
+  border-color: rgb(238, 18, 29) !important;
 }
