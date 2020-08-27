@@ -1,5 +1,6 @@
 import { placeMark } from './player.js';
 import { O_TURN, checkWinner } from './game.js'
+import { cpuMove } from './cpu.js';
 
 export const X_CLASS = 'x'
 export const O_CLASS = 'o'
@@ -17,6 +18,7 @@ export function handleClick (e) {
   const currentClass = O_TURN ? O_CLASS : X_CLASS
   placeMark(box, currentClass)
   checkWinner(currentClass)
+  cpuMove(box,currentClass)
   setBoardHoverClass()
 }
 

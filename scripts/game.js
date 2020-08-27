@@ -58,7 +58,7 @@ function endGame(draw) {
   winningMessage.classList.add('show')
 }
 
-export function checkPlayersNames () {
+export function isValidNames () {
   const names = playersNames()
   if ((names[0] === '') && (names[1] === '')) {
     playerOne.classList.add('error')

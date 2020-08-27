@@ -1,5 +1,5 @@
 import { render as renderBoard, setBoardHoverClass, boxes, handleClick, X_CLASS, O_CLASS } from './board.js';
-import { winningMessage, WINNING_MESSAGE_TEXT, checkPlayersNames } from './game.js';
+import { winningMessage, WINNING_MESSAGE_TEXT, isValidNames } from './game.js';
 import { playerOne, playerTwo } from "./player.js";
 
 const restartButton = document.getElementById('restartBtn')
@@ -9,7 +9,7 @@ const exitButton = document.getElementById('exitBtn')
 const inputs = document.querySelectorAll('input')
 
 function start () {
-  if(checkPlayersNames()){
+  if (isValidNames()){
     startPage.classList.add('d-none')
     renderBoard()
     setBoardHoverClass()
